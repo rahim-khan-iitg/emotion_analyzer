@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emotion Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center mt-3">
+        <div class="container">
+            <div class="row text-center">
+                <h1>Emotion Analyzer</h1>
+            </div>
+            <div class="row">
+                <!-- <label for="" class="form-label">Write the text here</label> -->
+            </div>
+            <form action="{% url 'home'%}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <textarea name="text" id="text" cols="30" rows="10" class="form-control mt-3" placeholder="Write text here" required></textarea>
+                </div>
+                <div class="row">   
+                    <div class="col-1"><button type="submit" class="btn btn-success mt-2">Analyze</button></div>
+                    <div class="col-1"><button class="btn btn-danger mt-2 mx-0" onclick="clear()">clear</button></div>
+                </div>
+            </form>
+            <div class="row text-center">
+                <div class="col">
+                    <label for="" style="font-size: large;">{{result}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let clear=()=>{
+                textarea=document.getElementById('text');
+                textarea.value=null;
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
